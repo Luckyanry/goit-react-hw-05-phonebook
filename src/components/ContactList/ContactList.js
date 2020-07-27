@@ -1,20 +1,18 @@
 import React from "react";
-import SingleContact from "../SingleContact/SingleContact";
 import PropTypes from "prop-types";
+import { TransitionGroup, CSSTransition } from "react-transition-group";
+import SingleContact from "../SingleContact/SingleContact";
+import "./ContactList.css";
 
 const ContactList = ({ filteredContacts, deleteContact }) => {
   return (
-    <ul>
-      {filteredContacts.map((contact, id) => {
-        return (
-          <SingleContact
-            key={id}
-            contact={contact}
-            deleteContact={deleteContact}
-          />
-        );
-      })}
-    </ul>
+    <TransitionGroup component="ul" className="ContactList">
+      {filteredContacts.map((contact, id) => (
+        <CSSTransition key={id} classNames="ListItem" timeout={800}>
+          <SingleContact contact={contact} deleteContact={deleteContact} />
+        </CSSTransition>
+      ))}
+    </TransitionGroup>
   );
 };
 

@@ -1,25 +1,12 @@
-.ContactsForm {
-  width: 280px;
-  height: max-content;
-  border: 2px solid #1a1a1a;
-  padding: 20px;
+.ContactList {
+  background-color: aqua;
 }
 
-.InputName {
-  font-weight: 700;
-}
-
-.InputForm {
-  width: 180px;
-  height: 20px;
-  margin: 10px 0 30px;
-}
-
-.Alert-enter-active {
+.ListItem-enter-active {
   animation: task 800ms ease-in alternate-reverse;
 }
 
-.Alert-exit-active {
+.ListItem-exit-active {
   animation: back 800ms ease-in;
 }
 

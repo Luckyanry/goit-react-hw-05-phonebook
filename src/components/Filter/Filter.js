@@ -1,6 +1,6 @@
 import React from "react";
-import "./Filter.css";
 import PropTypes from "prop-types";
+import "./Filter.css";
 
 const Filter = ({ state, handleFilter }) => {
   const { filter } = state;

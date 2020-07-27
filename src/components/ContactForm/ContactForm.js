@@ -1,7 +1,8 @@
 import React, { Component } from "react";
-import "./ContactForm.css";
-import { v4 as uuidv4 } from "uuid";
+import { CSSTransition } from "react-transition-group";
 import PropTypes from "prop-types";
+import { v4 as uuidv4 } from "uuid";
+import "./ContactForm.css";
 
 class ContactForm extends Component {
   formInitialState = {
@@ -11,6 +12,7 @@ class ContactForm extends Component {
 
   state = {
     ...this.formInitialState,
+    alert: false,
   };
 
   inputHandler = ({ target }) => {
@@ -21,13 +23,14 @@ class ContactForm extends Component {
   };
 
   submitHandler = (e) => {
-    const { name, number } = this.state;
+    const { name, number, alert } = this.state;
     e.preventDefault();
 
     const { contacts } = this.props.state;
     const isExists = contacts.find((contact) => contact.name === name);
     if (isExists) {
-      alert(`${name} is already exist in contacts!`);
+      // alert(`${name} is already exist in contacts!`);
+      this.toggleAlert(alert);
       return this.reset();
     }
 
@@ -45,38 +48,56 @@ class ContactForm extends Component {
     this.setState({ ...this.formInitialState });
   };
 
+  toggleAlert = (status) => {
+    this.setState({ alert: !status });
+  };
+
   render() {
-    const { name, number } = this.state;
+    const { name, number, alert } = this.state;
+
     return (
-      <form className="ContactsForm" onSubmit={this.submitHandler}>
-        <label className="InputName">
-          Name
+      <>
+        <CSSTransition
+          in={alert}
+          classNames="Alert"
+          timeout={500}
+          mountOnEnter
+          unmountOnExit
+        >
+          <button
+            onClick={this.toggleAlert}
+          >{`Contact already exists!`}</button>
+        </CSSTransition>
+        <form className="ContactsForm" onSubmit={this.submitHandler}>
+          <label className="InputName">
+            Name
+            <br />
+            <input
+              className="InputForm"
+              type="text"
+              name="name"
+              placeholder="Add name"
+              value={name}
+              onChange={this.inputHandler}
+            />
+          </label>
           <br />
-          <input
-            className="InputForm"
-            type="text"
-            name="name"
-            placeholder="Add name"
-            value={name}
-            onChange={this.inputHandler}
-          />
-        </label>
-        <br />
-        <label className="InputName">
-          Number
+          <label className="InputName">
+            Number
+            <br />
+            <input
+              className="InputForm"
+              type="text"
+              name="number"
+              placeholder="Add phone number"
+              value={number}
+              onChange={this.inputHandler}
+            />
+          </label>
           <br />
-          <input
-            className="InputForm"
-            type="text"
-            name="number"
-            placeholder="Add phone number"
-            value={number}
-            onChange={this.inputHandler}
-          />
-        </label>
-        <br />
-        <button type="submit">Create contact</button>
-      </form>
+          <button type="submit">Create contact</button>
+        </form>
+      </>
     );
   }
 }

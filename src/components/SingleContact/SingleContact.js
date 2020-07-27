@@ -1,6 +1,6 @@
 import React from "react";
-import "./SingleContact.css";
 import PropTypes from "prop-types";
+import "./SingleContact.css";
 
 const SingleContact = ({ contact, deleteContact }) => {
   const { name, id, number } = contact;

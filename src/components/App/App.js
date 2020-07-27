@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import { CSSTransition } from "react-transition-group";
 import ContactForm from "../ContactForm/ContactForm";
 import Filter from "../Filter/Filter";
 import ContactList from "../ContactList/ContactList";
@@ -13,9 +14,14 @@ class App extends Component {
       { id: "id-4", name: "Annie Copeland", number: "227-91-26" },
     ],
     filter: "",
+    animation: false,
   };
 
   componentDidMount() {
+    this.setState((state) => ({
+      animation: !state.animation,
+    }));
+
     const savedContacts = localStorage.getItem("contacts");
     if (savedContacts) {
       this.setState({
@@ -59,9 +65,17 @@ class App extends Component {
   };
 
   render() {
+    const { animation } = this.state;
     return (
       <>
-        <h1>Phonebook</h1>
+        <CSSTransition
+          in={animation}
+          classNames="Title"
+          timeout={500}
+          mountOnEnter
+        >
+          <h1>Phonebook</h1>
+        </CSSTransition>
         <ContactForm state={this.state} addContact={this.addContact} />
 
         {this.state.contacts.length > 0 ? (
