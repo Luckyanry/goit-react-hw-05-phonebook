@@ -8,7 +8,7 @@ const ContactList = ({ filteredContacts, deleteContact }) => {
   return (
     <TransitionGroup component="ul" className="ContactList">
       {filteredContacts.map((contact, id) => (
-        <CSSTransition key={id} classNames="ListItem" timeout={800}>
+        <CSSTransition key={id} classNames="ListItem" timeout={250}>
           <SingleContact contact={contact} deleteContact={deleteContact} />
         </CSSTransition>
       ))}

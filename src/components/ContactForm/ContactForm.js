@@ -55,15 +55,16 @@ class ContactForm extends Component {
 
   render() {
     const { name, number, alert } = this.state;
+    const alertDelay = () => this.setState({ alert: !alert });
 
     return (
       <>
         <CSSTransition
           in={alert}
           classNames="Alert"
-          timeout={500}
-          mountOnEnter
+          timeout={1500}
           unmountOnExit
+          onEntered={alertDelay}
         >
           <button
             onClick={this.toggleAlert}

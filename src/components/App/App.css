@@ -27,6 +27,28 @@
   animation: task 500ms ease-in alternate-reverse;
 }
 
+.FilterAnimation-enter {
+  opacity: 0;
+  transform: scale(0.1);
+}
+
+.FilterAnimation-enter-active {
+  opacity: 1;
+  transform: scale(1);
+  transition: all 250ms linear;
+}
+
+.FilterAnimation-exit {
+  opacity: 1;
+  transform: scale(1);
+}
+
+.FilterAnimation-exit-active {
+  opacity: 0;
+  transform: scale(0.1);
+  transition: all 250ms linear;
+}
+
 @keyframes task {
   0% {
     transform: translateX(0);

@@ -9,11 +9,11 @@
 }
 
 .ListItem-enter-active {
-  animation: task 800ms ease-in alternate-reverse;
+  animation: task 250ms ease-in alternate-reverse;
 }
 
 .ListItem-exit-active {
-  animation: back 800ms ease-in;
+  animation: back 250ms ease-in;
 }
 
 @keyframes task {

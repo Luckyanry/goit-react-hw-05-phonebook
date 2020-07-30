@@ -85,9 +85,14 @@ class App extends Component {
           </>
         )}
 
-        {this.state.contacts.length > 1 && (
+        <CSSTransition
+          in={this.state.contacts.length > 1}
+          classNames="FilterAnimation"
+          timeout={250}
+          unmountOnExit
+        >
           <Filter state={this.state} handleFilter={this.handleFilter} />
-        )}
+        </CSSTransition>
 
         <ContactList
           filteredContacts={this.getFilteredContact()}
