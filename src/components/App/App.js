@@ -14,7 +14,6 @@ class App extends Component {
       { id: "id-4", name: "Annie Copeland", number: "227-91-26" },
     ],
     filter: "",
-    animation: false,
   };
 
   componentDidMount() {
@@ -65,35 +64,36 @@ class App extends Component {
   };
 
   render() {
-    const { animation } = this.state;
     return (
-      <>
+      <div className="Container">
         <CSSTransition
-          in={animation}
-          classNames="Title"
+          in={true}
+          appear={true}
+          classNames="Title-slideIn"
           timeout={500}
-          mountOnEnter
+          unmountOnExit
         >
-          <h1>Phonebook</h1>
+          <h1 className="AppTitle">Phonebook</h1>
         </CSSTransition>
+
         <ContactForm state={this.state} addContact={this.addContact} />
 
-        {this.state.contacts.length > 0 ? (
-          <h2>Contacts</h2>
-        ) : (
+        {this.state.contacts.length === 0 && (
           <>
-            <h2>Contacts</h2>
+            <h2 className="ContactTitle">Contacts</h2>
             <p>Contacts list is empty. Please, create new cotnact!</p>
           </>
         )}
+
         {this.state.contacts.length > 1 && (
           <Filter state={this.state} handleFilter={this.handleFilter} />
         )}
+
         <ContactList
           filteredContacts={this.getFilteredContact()}
           deleteContact={this.deleteContact}
         />
-      </>
+      </div>
     );
   }
 }

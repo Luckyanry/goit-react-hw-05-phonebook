@@ -5,18 +5,20 @@ import "./Filter.css";
 const Filter = ({ state, handleFilter }) => {
   const { filter } = state;
   return (
-    <label className="InputName">
-      Find contacts by name
-      <br />
-      <input
-        className="FilterForm"
-        type="text"
-        name="filter"
-        placeholder="Find contact"
-        value={filter}
-        onChange={handleFilter}
-      />
-    </label>
+    <div className="FilterBox">
+      <label className="InputLabel">
+        Find contacts by name
+        <br />
+        <input
+          className="FilterForm"
+          type="text"
+          name="filter"
+          placeholder="Find contact"
+          value={filter}
+          onChange={handleFilter}
+        />
+      </label>
+    </div>
   );
 };
 

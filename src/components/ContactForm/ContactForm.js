@@ -17,6 +17,7 @@ class ContactForm extends Component {
 
   inputHandler = ({ target }) => {
     const { value, name } = target;
+
     this.setState({
       [name]: value,
     });
@@ -28,8 +29,8 @@ class ContactForm extends Component {
 
     const { contacts } = this.props.state;
     const isExists = contacts.find((contact) => contact.name === name);
+
     if (isExists) {
-      // alert(`${name} is already exist in contacts!`);
       this.toggleAlert(alert);
       return this.reset();
     }
@@ -66,6 +67,7 @@ class ContactForm extends Component {
         >
           <button
             onClick={this.toggleAlert}
+            className="AlertBtn"
           >{`Contact already exists!`}</button>
         </CSSTransition>
         <form className="ContactsForm" onSubmit={this.submitHandler}>
@@ -95,7 +97,9 @@ class ContactForm extends Component {
             />
           </label>
           <br />
-          <button type="submit">Create contact</button>
+          <button type="submit" className="SubmitBtn">
+            Create contact
+          </button>
         </form>
       </>
     );

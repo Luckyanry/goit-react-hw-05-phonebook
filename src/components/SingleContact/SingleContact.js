@@ -6,9 +6,10 @@ const SingleContact = ({ contact, deleteContact }) => {
   const { name, id, number } = contact;
   return (
     <li className="Contact">
-      {name}: {number}
+      <h4>{name}</h4>
+      <p>{number}</p>
       <button className="DelBtn" type="button" id={id} onClick={deleteContact}>
-        Delete
+        &#10008;
       </button>
     </li>
   );

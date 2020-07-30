@@ -1,56 +1,69 @@
-.ContactsForm {
-  width: 280px;
+.AlertBtn {
+  width: 300px;
   height: max-content;
-  border: 2px solid #1a1a1a;
+  color: #ffffff;
+  font-size: 16px;
+  font-weight: 800;
+  background-color: #f32828;
+  border-radius: 10px;
+  border: none;
   padding: 20px;
+  margin-bottom: 10px;
+}
+
+.ContactsForm {
+  width: 300px;
+  height: max-content;
+  border: none;
+  border-radius: 3px;
+  box-shadow: 2px 2px 7px -1px rgba(158, 158, 158, 0.71);
+  padding: 20px;
+  margin-bottom: 20px;
 }
 
 .InputName {
   font-weight: 700;
 }
 
+.InputForm,
+.SubmitBtn {
+  width: 260px;
+  height: 30px;
+  border-radius: 5px;
+}
+
 .InputForm {
-  width: 180px;
-  height: 20px;
+  border: 1px solid #808080;
   margin: 10px 0 30px;
+  padding: 10px;
+}
+
+.SubmitBtn {
+  color: #ffffff;
+  font-size: 16px;
+  font-weight: 500;
+  border: none;
+  background-color: #4242ce;
+}
+
+.Alert-enter {
+  opacity: 0;
+  transform: translateX(100%);
 }
 
 .Alert-enter-active {
-  animation: task 800ms ease-in alternate-reverse;
+  opacity: 1;
+  transform: translateX(0);
+  transition: all 500ms ease-in;
+}
+
+.Alert-exit {
+  opacity: 1;
+  transform: translateX(0);
 }
 
 .Alert-exit-active {
-  animation: back 800ms ease-in;
-}
-
-@keyframes task {
-  0% {
-    transform: translateX(0);
-  }
-
-  30% {
-    opacity: 0.7;
-    transform: translateX(30px);
-  }
-
-  100% {
-    opacity: 0;
-    transform: translateX(-200px);
-  }
-}
-
-@keyframes back {
-  0% {
-    transform: translateX(0);
-  }
-
-  30% {
-    opacity: 0.7;
-    transform: translateX(30px);
-  }
-
-  100% {
-    opacity: 0;
-    transform: translateX(-200px);
-  }
+  opacity: 0;
+  transform: translateX(100%);
+  transition: all 500ms ease-in;
 }
